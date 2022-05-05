@@ -1,0 +1,26 @@
+SET SERVEROUTPUT ON;
+DECLARE
+	
+BEGIN
+	DBMS_OUTPUT.PUT_LINE('FUNCTION func_aftertax(sal NUMBER)');
+	DBMS_OUTPUT.PUT_LINE('aftertax: '||PKG_EXAMPLE.func_aftertax(3000));
+	
+	DBMS_OUTPUT.PUT_LINE('PROCEDURE pro_emp( 7788 )');
+	PKG_EXAMPLE.pro_emp(7788);
+	
+	DBMS_OUTPUT.PUT_LINE('PROCEDURE pro_dept(10)');
+	PKG_EXAMPLE.pro_dept(10);
+END;
+/
+
+16:07:56 SCOTT>@SP27_PACKAGE_BODY_EXEC.SQL
+FUNCTION func_aftertax(sal NUMBER)
+aftertax: 2850
+PROCEDURE pro_emp( 7788 )
+ename : SCOTT
+sal : 3000
+PROCEDURE pro_dept(10)
+dname :ACCOUNTING
+loc   :NEW YORK
+
+PL/SQL 처리가 정상적으로 완료되었습니다.

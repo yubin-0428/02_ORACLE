@@ -1,0 +1,12 @@
+SELECT RPAD(ename,9,SUBSTR('1234567890',LENGTH(ename)+1) ) AS RPAD01,
+       LENGTH(ename),
+	   SUBSTR('1234567890',LENGTH(ename)+1) AS SUBSTR01
+FROM emp
+WHERE deptno = 10
+;
+--RPAD01      
+--------------
+--CLARK6789  CLARK(5)6789
+--KING56789
+--MILLER789
+

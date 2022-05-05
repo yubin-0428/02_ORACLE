@@ -1,0 +1,2 @@
+DROP PROCEDURE PRO_NOPARAM;
+프로시저가 삭제되었습니다.

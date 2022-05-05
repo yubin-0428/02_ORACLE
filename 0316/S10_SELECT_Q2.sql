@@ -1,0 +1,11 @@
+SELECT DISTINCT job
+FROM emp
+;
+
+JOB
+------------------
+CLERK
+SALESMAN
+ANALYST
+MANAGER
+PRESIDENT

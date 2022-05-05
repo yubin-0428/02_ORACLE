@@ -1,0 +1,12 @@
+SET SERVEROUTPUT ON;
+DECLARE
+	V_DEPTNO DEPT.DEPTNO%TYPE := 50 ;
+BEGIN
+    --대소문자 구분 없음
+	DBMS_OUTPUT.PUT_LINE('V_DEPTNO: ' || v_deptno);
+END;
+/
+
+V_DEPTNO: 50
+
+PL/SQL 처리가 정상적으로 완료되었습니다.

@@ -1,0 +1,3 @@
+ALTER TABLE emp_hw
+ADD bigo VARCHAR2(20 BYTE)
+;

@@ -1,0 +1,3 @@
+DROP FUNCTION FUNC_AFTERTAX;
+
+함수가 삭제되었습니다.

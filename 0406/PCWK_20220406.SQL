@@ -1,0 +1,109 @@
+--/* 부서 */
+--CREATE TABLE TB_DEPT_CONST (
+--	DEPTNO NUMBER(2) NOT NULL,
+--	DNAME VARCHAR2(14 BYTE), 
+--	LOC VARCHAR2(13) NOT NULL 
+--);
+--
+--COMMENT ON TABLE TB_DEPT_CONST IS '부서';
+--
+--COMMENT ON COLUMN TB_DEPT_CONST.DEPTNO IS '부서번호';
+--
+--COMMENT ON COLUMN TB_DEPT_CONST.DNAME IS '부서명';
+--
+--COMMENT ON COLUMN TB_DEPT_CONST.LOC IS '지역';
+--
+--CREATE UNIQUE INDEX PK_TB_DEPT_CONST
+--	ON TB_DEPT_CONST (
+--		DEPTNO ASC
+--	);
+--
+--ALTER TABLE TB_DEPT_CONST
+--	ADD
+--		CONSTRAINT PK_TB_DEPT_CONST
+--		PRIMARY KEY (
+--			DEPTNO
+--		);
+--
+--/* 사원 */
+--CREATE TABLE TB_EMP_CONST (
+--	EMPNO NUMBER(4) NOT NULL, 
+--	ENAME VARCHAR2(10 BYTE) NOT NULL, 
+--	JOB VARCHAR2(9),
+--	TEL VARCHAR2(20 BYTE),
+--	SAL NUMBER(7,2),
+--	COMM NUMBER(7,2),
+--	DEPTNO NUMBER(2) 
+--);
+--
+--COMMENT ON TABLE TB_EMP_CONST IS '사원';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.EMPNO IS '사번';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.ENAME IS '이름';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.JOB IS '직무';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.TEL IS '전화';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.SAL IS '급여';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.COMM IS '커미션';
+--
+--COMMENT ON COLUMN TB_EMP_CONST.DEPTNO IS '부서번호';
+--
+--CREATE UNIQUE INDEX PK_TB_EMP_CONST
+--	ON TB_EMP_CONST (
+--		EMPNO ASC
+--	);
+--
+--CREATE UNIQUE INDEX UIX_TB_EMP_CONST
+--	ON TB_EMP_CONST (
+--		TEL DESC
+--	);
+--
+--ALTER TABLE TB_EMP_CONST
+--	ADD
+--		CONSTRAINT PK_TB_EMP_CONST
+--		PRIMARY KEY (
+--			EMPNO
+--		);
+--
+--ALTER TABLE TB_EMP_CONST
+--	ADD
+--		CONSTRAINT UK_TB_EMP_CONST
+--		UNIQUE (
+--			TEL
+--		);
+--
+--ALTER TABLE TB_EMP_CONST
+--	ADD
+--		CONSTRAINT CK_TB_EMP_CONST
+--		CHECK (sal BETWEEN 1000 AND 9999);
+--
+--ALTER TABLE TB_EMP_CONST
+--	ADD
+--		CONSTRAINT FK_TB_DEPT_CONST_TO_TB_EMP_CONST
+--		FOREIGN KEY (
+--			DEPTNO
+--		)
+--		REFERENCES TB_DEPT_CONST (
+--			DEPTNO
+--		);
+--		
+		
+col owner for a10			
+col constraint_name for a35
+col constraint_type for a25
+col table_name for a25
+col r_owner for a15
+col r_constraint_name for a25
+SELECT t1.owner,
+       t1.constraint_name,
+       t1.constraint_type,
+       t1.table_name,
+       t1.r_owner,
+       t1.r_constraint_name
+FROM user_constraints t1
+WHERE t1.table_name IN ('TB_EMP_CONST','TB_DEPT_CONST') 
+;		

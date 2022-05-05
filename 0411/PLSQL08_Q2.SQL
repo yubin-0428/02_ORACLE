@@ -1,0 +1,24 @@
+SET SERVEROUTPUT ON;
+DECLARE
+	V_WRONG DATE;
+BEGIN
+	SELECT ename INTO V_WRONG
+	FROM emp
+	WHERE empno = 7369;
+	
+	
+EXCEPTION 
+	WHEN VALUE_ERROR THEN
+		DBMS_OUTPUT.PUT_LINE('예외 처리: 수치 또는 값 오류 발생');
+	WHEN OTHERS THEN
+		DBMS_OUTPUT.PUT_LINE('예외처리 : 사전 정의 외 오류 발생');
+        DBMS_OUTPUT.PUT_LINE('SQLCODE: '|| TO_CHAR(	SQLCODE));	
+		DBMS_OUTPUT.PUT_LINE('SQLERRM: '|| SQLERRM);		
+END;
+/
+
+예외처리 : 사전 정의 외 오류 발생
+SQLCODE: -1841
+SQLERRM: ORA-01841: 년은 영이 아닌 -4713 과 +4713 사이의 값으로 지정해야 합니다.
+
+PL/SQL 처리가 정상적으로 완료되었습니다
